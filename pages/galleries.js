@@ -1,10 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import nookies from "nookies";
 import { AlurakutMenu } from "../src/lib/AlurakutCommons";
 import { MainGrid } from "../src/components/Home";
 import ListComics from "../src/components/ListComics";
 import { tokenRead } from "../src/services/datocms";
 
-export default function Galleries() {
+export default function Galleries(props) {
+  const user = JSON.parse(props.currentUser);
   const [comics, setComics] = useState([]);
 
   useEffect(() => {
@@ -22,7 +24,11 @@ export default function Galleries() {
         },
         body: JSON.stringify({
           query: `query { 
-            allComics {
+            allComics(filter: {
+              username: {
+                eq: ${user.username}
+              }
+            }) {
               id
               title
               cover {
@@ -60,4 +66,25 @@ export default function Galleries() {
       </MainGrid>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  const currentUser = cookies.CURRENT_USER;
+
+  if (!currentUser) {
+    nookies.destroy("CURRENT_USER");
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      currentUser,
+    }, // will be passed to the page component as props
+  };
 }
