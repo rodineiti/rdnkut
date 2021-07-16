@@ -31,8 +31,6 @@ export default function Home(props) {
     getFollowings();
   }, []);
 
-  console.log(user);
-
   async function getFollowers() {
     try {
       const response = await fetch(
@@ -41,7 +39,6 @@ export default function Home(props) {
       const json = await response.json();
       setFollowers(json);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível resgatar os dados");
     }
   }
@@ -54,7 +51,6 @@ export default function Home(props) {
       const json = await response.json();
       setFollowings(json);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível resgatar os dados");
     }
   }
@@ -88,7 +84,6 @@ export default function Home(props) {
 
       setCommunities(data.allCommunities);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível resgatar as comunidades do datocms");
     }
   }
@@ -120,7 +115,6 @@ export default function Home(props) {
 
       setPosts(data.allFeeds);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível resgatar os feeds do datocms");
     }
   }
@@ -167,7 +161,6 @@ export default function Home(props) {
 
       setCommunities([record.data, ...communities]);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível criar comunidade no datocms");
     }
   }
@@ -202,7 +195,6 @@ export default function Home(props) {
 
       setPosts([post.data, ...posts]);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível criar postagem no datocms");
     }
   }

@@ -41,7 +41,6 @@ export default function Galleries() {
 
       setComics(data.allComics);
     } catch (error) {
-      console.log(error);
       alert("Não foi possível resgatar os dados do datocms");
     }
   }

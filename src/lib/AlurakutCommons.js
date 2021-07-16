@@ -1,4 +1,5 @@
 import React from "react";
+import nookies from "nookies";
 import styled, { css } from "styled-components";
 import NextLink from "next/link";
 
@@ -40,7 +41,14 @@ export function AlurakutMenu({ githubUser }) {
         </nav>
 
         <nav>
-          <a href={`/login`}>Sair</a>
+          <a
+            href={`/login`}
+            onClick={(e) => {
+              nookies.destroy(null, "CURRENT_USER");
+            }}
+          >
+            Sair
+          </a>
           <div>
             <input placeholder="Pesquisar no Rdnkut" style={{ outline: "0" }} />
           </div>
@@ -225,7 +233,12 @@ export function AlurakutProfileSidebarMenuDefault() {
           <img src={`${BASE_URL}/icons/plus.svg`} />
           GitHub Trends
         </a>
-        <a href="/login">
+        <a
+          href={`/login`}
+          onClick={(e) => {
+            nookies.destroy(null, "CURRENT_USER");
+          }}
+        >
           <img src={`${BASE_URL}/icons/logout.svg`} />
           Sair
         </a>

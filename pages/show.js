@@ -55,7 +55,6 @@ export default function Show() {
         })
       );
     } catch (error) {
-      console.log(error);
       alert("Não foi possível resgatar os dados do datocms");
     }
   }

@@ -32,7 +32,7 @@ export function UserContextProvider(props) {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
