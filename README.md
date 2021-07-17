@@ -4,6 +4,14 @@
   </a>
 </h1>
 
+## 🧪 Staks
+
+This project was developed with the following technologies:
+
+- [Nextjs](https://nextjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [DatoCms](https://www.datocms.com/)
+
 <p align="center">
 	<strong>Web App NextJs - Alurakut/Rdnkut</strong>	 - Using Node version 14.17.0
 </p>
